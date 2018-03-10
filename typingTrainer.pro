@@ -43,4 +43,4 @@ FORMS += \
     trainer.ui
 
 RESOURCES += \
-    files.qrc
+    recources.qrc

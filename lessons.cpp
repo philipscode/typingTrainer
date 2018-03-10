@@ -34,7 +34,6 @@ void lessons::start_lesson(QString s)
 
 void lessons::on_lesson_1_clicked()
 {
-    //emit file_name("/Users/philip/QtProjects/typingTrainer/Files/lorem1.txt");
     emit file_name(":/new/prefix1/Files/lorem1.txt");
 }
 

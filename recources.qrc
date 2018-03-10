@@ -1,0 +1,9 @@
+<RCC>
+    <qresource prefix="/new/prefix1">
+        <file>Files/lorem5.txt</file>
+        <file>Files/lorem4.txt</file>
+        <file>Files/lorem3.txt</file>
+        <file>Files/lorem2.txt</file>
+        <file>Files/lorem1.txt</file>
+    </qresource>
+</RCC>
