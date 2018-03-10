@@ -3,8 +3,6 @@
 
 #include <QDialog>
 #include <QString>
-#include <QCoreApplication>
-#include <QDir>
 #include "trainer.h"
 
 namespace Ui {
@@ -19,8 +17,6 @@ class lessons : public QDialog
 public:
     explicit lessons(QWidget *parent = 0);
     ~lessons();
-
-    QString curDir = QDir::currentPath();
 
 signals:
     void main_window();

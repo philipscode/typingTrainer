@@ -5,7 +5,8 @@
 #include <QKeyEvent>
 #include <QEventLoop>
 #include <QString>
-#include <QEvent>
+#include <QTime>
+#include <QTimer>
 
 namespace Ui {
 class trainer;
@@ -34,10 +35,14 @@ signals:
 private slots:
     void on_Back_to_lesson_clicked();
     void startClicked();
+    void onTimer();
 
 private:
     Ui::trainer *ui;
-    bool eventFilter(QObject *obj, QEvent *event);
+
+    QTimer _timer;
+    QTime _timeLeft;
+    QTime _lastStart;
 };
 
 #endif // TRAINER_H

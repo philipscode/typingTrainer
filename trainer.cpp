@@ -10,6 +10,8 @@
 #include <QEventLoop>
 #include <QDebug>
 #include <QEvent>
+#include <QTime>
+#include <QTimer>
 
 
 trainer::trainer(QWidget *parent) :
@@ -20,6 +22,8 @@ trainer::trainer(QWidget *parent) :
     QObject::connect(ui->startButton, SIGNAL(clicked()),
                      this, SLOT(startClicked()));
     qApp->installEventFilter(this);
+    _timer.setInterval(20);
+    connect(&_timer, SIGNAL(timeout()), this, SLOT(onTimer()));
 }
 
 trainer::~trainer()
@@ -27,28 +31,26 @@ trainer::~trainer()
     delete ui;
 }
 
-bool trainer::eventFilter(QObject *obj, QEvent *event)
-{
-    if (event->type() == QEvent::KeyPress)
-    {
-        QKeyEvent *keyEvent = static_cast<QKeyEvent *>(event);
-        if (keyEvent->key() == Qt::Key_Space)
-            qDebug() << "Space!";
-    }
-    return QObject::eventFilter(obj, event);
-}
-
 void trainer::keyPressEvent(QKeyEvent* ke)
 {
     if (ke->key() == Qt::Key_Shift) return;
-    if (ke->key() == Qt::Key_Space) trainer::w = ke->text();
     trainer::w = ke->text();
     emit pressed();
 }
 
 void trainer::startClicked()
 {
-    ui->startButton->setEnabled(false);
+    if (_timer.isActive()){
+            _timer.stop();
+            _timeLeft = QTime::fromMSecsSinceStartOfDay(_timeLeft.msecsSinceStartOfDay() + QTime::currentTime().msecsSinceStartOfDay() - _lastStart.msecsSinceStartOfDay());
+            ui->startButton->setText("START");
+        }
+        else {
+            _lastStart = QTime::currentTime();
+            _timer.start();
+            ui->startButton->setText("PAUSE");
+        }
+   // ui->startButton->setEnabled(false);
     QFile inputFile(trainer::fileName);
     if (inputFile.open(QIODevice::ReadOnly))
     {
@@ -61,6 +63,8 @@ void trainer::startClicked()
             if (trainer::flag) break;
             if (!subLine.isNull())
             {
+                prevText.remove(0, 1);
+                prevText.append(subLine[0]);
                 subLine.remove(0, 1);
                 subLine.append(' ');
             }
@@ -71,10 +75,10 @@ void trainer::startClicked()
             {
                 if (trainer::flag) break;
                 subLine = line.mid(i, 10);
-                if (i <= 9)
-                    prevText = line.mid(0, i);
-                else
-                    prevText = line.mid(i - 10, 10);
+                if (prevText.length() == 10 && i >= 1)
+                    prevText.remove(0, 1);
+                if (i >= 1)
+                    prevText.append(line[i-1]);
                 do
                 {
                     if (trainer::flag) break;
@@ -92,6 +96,8 @@ void trainer::startClicked()
                 } while (trainer::w != subLine[0]);
             }
         }
+        prevText.remove(0, 1);
+        prevText.append(subLine[0]);
         subLine.remove(0, 1);
         for (int i = 0; i < subLine.length() ; i++)
         {
@@ -115,13 +121,20 @@ void trainer::startClicked()
         qDebug() << trainer::errs;
         inputFile.close();
         trainer::flag = false;
-        ui->startButton->setEnabled(true);
+   //     ui->startButton->setEnabled(true);
         ui->label->setText("Good job!");
+         _timer.stop();
     }
+}
+void trainer::onTimer()
+{
+    int mseconds = _timeLeft.msecsSinceStartOfDay() + QTime::currentTime().msecsSinceStartOfDay() - _lastStart.msecsSinceStartOfDay();
+    ui->label_time->setText(QTime::fromMSecsSinceStartOfDay(mseconds).toString("mm:ss"));
 }
 
 void trainer::on_Back_to_lesson_clicked()
 {
+    _timer.stop();
     trainer::flag = true;
     this->close();
     trainer::fileName.clear();
