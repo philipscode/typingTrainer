@@ -7,6 +7,7 @@
 #include <QString>
 #include <QTime>
 #include <QTimer>
+#include <QSound>
 
 namespace Ui {
 class trainer;

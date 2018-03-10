@@ -90,6 +90,7 @@ void trainer::startClicked()
                     loop.exec();
                     if (w != subLine[0])
                     {
+                        QSound::play(":/new/prefix2/Sounds/beep.wav");
                         ++trainer::errs;
                         qDebug() << trainer::errs;
                     }

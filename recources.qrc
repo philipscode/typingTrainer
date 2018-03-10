@@ -6,4 +6,7 @@
         <file>Files/lorem2.txt</file>
         <file>Files/lorem1.txt</file>
     </qresource>
+    <qresource prefix="/new/prefix2">
+        <file>Sounds/beep.wav</file>
+    </qresource>
 </RCC>
