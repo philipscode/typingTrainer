@@ -7,6 +7,13 @@ about::about(QWidget *parent) :
     ui(new Ui::about)
 {
     ui->setupUi(this);
+
+    this->setWindowTitle("Typing trainer");
+
+    QCursor cursor = QCursor(QPixmap(":/new/prefix3/Images/cursor.png"),0,0);
+        this->setCursor(cursor);
+    QCursor warn_cursor = QCursor(QPixmap(":/new/prefix3/Images/warn_cursor.png"),0,0);
+        ui->GoBack->setCursor(warn_cursor);
 }
 
 about::~about()

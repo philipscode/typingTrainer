@@ -8,5 +8,11 @@
     </qresource>
     <qresource prefix="/new/prefix2">
         <file>Sounds/beep.wav</file>
+        <file>Sounds/bass1.mp3</file>
+    </qresource>
+    <qresource prefix="/new/prefix3">
+        <file>Images/cursor.png</file>
+        <file>Images/quest_cursor.png</file>
+        <file>Images/warn_cursor.png</file>
     </qresource>
 </RCC>

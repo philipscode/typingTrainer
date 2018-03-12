@@ -7,7 +7,7 @@
 #include <QString>
 #include <QTime>
 #include <QTimer>
-#include <QSound>
+#include <QMediaPlayer>
 
 namespace Ui {
 class trainer;
@@ -20,14 +20,15 @@ class trainer : public QWidget
 public:
     explicit trainer(QWidget *parent = 0);
     ~trainer();
-    void keyPressEvent(QKeyEvent* ke);
 
-    void fileRead();
+    void keyPressEvent(QKeyEvent* ke);
 
     QString w;
     QString fileName;
     int errs;
     bool flag = false;
+
+    QMediaPlayer * player = new QMediaPlayer();
 
 signals:
     void show_lesson_window();
@@ -36,6 +37,7 @@ signals:
 private slots:
     void on_Back_to_lesson_clicked();
     void startClicked();
+    void on_pauseButton_clicked();
     void onTimer();
 
 private:

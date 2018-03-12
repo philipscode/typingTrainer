@@ -10,8 +10,7 @@
 #include <QEventLoop>
 #include <QDebug>
 #include <QEvent>
-#include <QTime>
-#include <QTimer>
+#include <QMessageBox>
 
 
 trainer::trainer(QWidget *parent) :
@@ -19,11 +18,22 @@ trainer::trainer(QWidget *parent) :
     ui(new Ui::trainer)
 {
     ui->setupUi(this);
+
+    this->setWindowTitle("Typing trainer");
+
+    QCursor cursor = QCursor(QPixmap(":/new/prefix3/Images/cursor.png"),0,0);
+        this->setCursor(cursor);
+    QCursor warn_cursor = QCursor(QPixmap(":/new/prefix3/Images/warn_cursor.png"),0,0);
+        ui->Back_to_lesson->setCursor(warn_cursor);
+        ui->startButton->setCursor(warn_cursor);
+        ui->pauseButton->setCursor(warn_cursor);
+
     QObject::connect(ui->startButton, SIGNAL(clicked()),
                      this, SLOT(startClicked()));
     qApp->installEventFilter(this);
     _timer.setInterval(20);
     connect(&_timer, SIGNAL(timeout()), this, SLOT(onTimer()));
+    ui->pauseButton->setEnabled(false);
 }
 
 trainer::~trainer()
@@ -40,17 +50,10 @@ void trainer::keyPressEvent(QKeyEvent* ke)
 
 void trainer::startClicked()
 {
-    if (_timer.isActive()){
-            _timer.stop();
-            _timeLeft = QTime::fromMSecsSinceStartOfDay(_timeLeft.msecsSinceStartOfDay() + QTime::currentTime().msecsSinceStartOfDay() - _lastStart.msecsSinceStartOfDay());
-            ui->startButton->setText("START");
-        }
-        else {
-            _lastStart = QTime::currentTime();
-            _timer.start();
-            ui->startButton->setText("PAUSE");
-        }
-   // ui->startButton->setEnabled(false);
+    _lastStart = QTime::currentTime();
+    _timer.start();
+    ui->startButton->setEnabled(false);
+    ui->pauseButton->setEnabled(true);
     QFile inputFile(trainer::fileName);
     if (inputFile.open(QIODevice::ReadOnly))
     {
@@ -90,7 +93,9 @@ void trainer::startClicked()
                     loop.exec();
                     if (w != subLine[0])
                     {
-                        QSound::play(":/new/prefix2/Sounds/beep.wav");
+                        trainer::player->setMedia(QUrl("qrc:/new/prefix2/Sounds/bass1.mp3"));
+                        trainer::player->setVolume(50);
+                        trainer::player->play();
                         ++trainer::errs;
                         qDebug() << trainer::errs;
                     }
@@ -114,6 +119,9 @@ void trainer::startClicked()
                 loop.exec();
                 if ( w != subLine[i] )
                 {
+                    trainer::player->setMedia(QUrl("qrc:/new/prefix2/Sounds/bass1.mp3"));
+                    trainer::player->setVolume(50);
+                    trainer::player->play();
                     ++trainer::errs;
                     qDebug() << trainer::errs;
                 }
@@ -122,7 +130,8 @@ void trainer::startClicked()
         qDebug() << trainer::errs;
         inputFile.close();
         trainer::flag = false;
-   //     ui->startButton->setEnabled(true);
+        ui->startButton->setEnabled(true);
+        ui->pauseButton->setEnabled(false);
         ui->label->setText("Good job!");
          _timer.stop();
     }
@@ -136,9 +145,33 @@ void trainer::onTimer()
 void trainer::on_Back_to_lesson_clicked()
 {
     _timer.stop();
-    trainer::flag = true;
-    this->close();
-    trainer::fileName.clear();
-    emit show_lesson_window();
+    QMessageBox::StandardButton reply = QMessageBox::question(this, "Warning", "Are you sure?", QMessageBox::Yes| QMessageBox::No);
+    if (reply == QMessageBox::Yes)
+    {
+        trainer::flag = true;
+        this->close();
+        trainer::fileName.clear();
+        emit show_lesson_window();
+    }
 }
 
+void trainer::on_pauseButton_clicked()
+{
+    if (_timer.isActive())
+    {
+        _timer.stop();
+        _timeLeft = QTime::fromMSecsSinceStartOfDay(_timeLeft.msecsSinceStartOfDay() +
+                                                    QTime::currentTime().msecsSinceStartOfDay() -
+                                                    _lastStart.msecsSinceStartOfDay());
+        ui->pauseButton->setText("Resume");
+        QEventLoop loop;
+        connect(ui->pauseButton, SIGNAL(clicked(bool)), &loop, SLOT(quit()));
+        loop.exec();
+    }
+    else
+    {
+        _lastStart = QTime::currentTime();
+        _timer.start();
+        ui->pauseButton->setText("Pause");
+    }
+}

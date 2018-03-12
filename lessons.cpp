@@ -8,6 +8,19 @@ lessons::lessons(QWidget *parent) :
     ui(new Ui::lessons)
 {
     ui->setupUi(this);
+
+    this->setWindowTitle("Typing trainer");
+
+    QCursor cursor = QCursor(QPixmap(":/new/prefix3/Images/cursor.png"),0,0);
+        this->setCursor(cursor);
+    QCursor warn_cursor = QCursor(QPixmap(":/new/prefix3/Images/warn_cursor.png"),0,0);
+        ui->Back_to_menu->setCursor(warn_cursor);
+        ui->lesson_1->setCursor(warn_cursor);
+        ui->lesson_2->setCursor(warn_cursor);
+        ui->lesson_3->setCursor(warn_cursor);
+        ui->lesson_4->setCursor(warn_cursor);
+        ui->lesson_5->setCursor(warn_cursor);
+
     connect(this, SIGNAL(file_name(QString)),this, SLOT(start_lesson(QString)));
 }
 
