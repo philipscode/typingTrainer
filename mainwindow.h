@@ -5,6 +5,7 @@
 #include "lessons.h"
 #include "about.h"
 #include "trainer.h"
+#include "result.h"
 
 namespace Ui {
 class MainWindow;
@@ -18,21 +19,9 @@ public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
 
-
-signals:
-    void pressed();
-    void clicked();
-
-public slots:
-
-
-
 private slots:
-
     void on_Begin_clicked();
-
     void on_About_clicked();
-
     void on_Exit_clicked();
 
 private:

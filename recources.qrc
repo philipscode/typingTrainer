@@ -4,15 +4,18 @@
         <file>Files/lorem4.txt</file>
         <file>Files/lorem3.txt</file>
         <file>Files/lorem2.txt</file>
-        <file>Files/lorem1.txt</file>
+        <file>Files/lorem1mac.txt</file>
+        <file>Files/lorem1win.txt</file>
     </qresource>
     <qresource prefix="/new/prefix2">
         <file>Sounds/beep.wav</file>
         <file>Sounds/bass1.mp3</file>
+        <file>Sounds/clap.mp3</file>
     </qresource>
     <qresource prefix="/new/prefix3">
         <file>Images/cursor.png</file>
         <file>Images/quest_cursor.png</file>
         <file>Images/warn_cursor.png</file>
+        <file>Images/icon.png</file>
     </qresource>
 </RCC>

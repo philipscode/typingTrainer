@@ -28,19 +28,22 @@ SOURCES += \
         mainwindow.cpp \
     lessons.cpp \
     about.cpp \
-    trainer.cpp
+    trainer.cpp \
+    result.cpp
 
 HEADERS += \
         mainwindow.h \
     lessons.h \
     about.h \
-    trainer.h
+    trainer.h \
+    result.h
 
 FORMS += \
         mainwindow.ui \
     lessons.ui \
     about.ui \
-    trainer.ui
+    trainer.ui \
+    result.ui
 
 RESOURCES += \
     recources.qrc

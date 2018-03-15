@@ -24,17 +24,11 @@ signals:
 
 private slots:
     void on_Back_to_menu_clicked();
-
     void on_lesson_1_clicked();
-
     void on_lesson_2_clicked();
-
     void on_lesson_3_clicked();
-
     void on_lesson_4_clicked();
-
     void on_lesson_5_clicked();
-
     void start_lesson(QString s);
 
 private:

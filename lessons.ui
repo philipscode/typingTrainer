@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
-    <height>300</height>
+    <width>733</width>
+    <height>350</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -16,10 +16,10 @@
   <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
-     <x>140</x>
-     <y>40</y>
-     <width>151</width>
-     <height>200</height>
+     <x>230</x>
+     <y>60</y>
+     <width>241</width>
+     <height>231</height>
     </rect>
    </property>
    <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -33,13 +33,33 @@
           <verstretch>0</verstretch>
          </sizepolicy>
         </property>
+        <property name="font">
+         <font>
+          <family>Arial</family>
+          <pointsize>18</pointsize>
+         </font>
+        </property>
+        <property name="locale">
+         <locale language="Russian" country="Russia"/>
+        </property>
         <property name="text">
          <string>Выберите урок:</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
         </property>
        </widget>
       </item>
       <item>
        <widget class="QPushButton" name="lesson_1">
+        <property name="font">
+         <font>
+          <family>Arial</family>
+         </font>
+        </property>
+        <property name="locale">
+         <locale language="Russian" country="Russia"/>
+        </property>
         <property name="text">
          <string>1 Урок</string>
         </property>
@@ -47,6 +67,14 @@
       </item>
       <item>
        <widget class="QPushButton" name="lesson_2">
+        <property name="font">
+         <font>
+          <family>Arial</family>
+         </font>
+        </property>
+        <property name="locale">
+         <locale language="Russian" country="Russia"/>
+        </property>
         <property name="text">
          <string>2 Урок</string>
         </property>
@@ -54,6 +82,14 @@
       </item>
       <item>
        <widget class="QPushButton" name="lesson_3">
+        <property name="font">
+         <font>
+          <family>Arial</family>
+         </font>
+        </property>
+        <property name="locale">
+         <locale language="Russian" country="Russia"/>
+        </property>
         <property name="text">
          <string>3 Урок</string>
         </property>
@@ -61,6 +97,14 @@
       </item>
       <item>
        <widget class="QPushButton" name="lesson_4">
+        <property name="font">
+         <font>
+          <family>Arial</family>
+         </font>
+        </property>
+        <property name="locale">
+         <locale language="Russian" country="Russia"/>
+        </property>
         <property name="text">
          <string>4 Урок</string>
         </property>
@@ -68,6 +112,14 @@
       </item>
       <item>
        <widget class="QPushButton" name="lesson_5">
+        <property name="font">
+         <font>
+          <family>Arial</family>
+         </font>
+        </property>
+        <property name="locale">
+         <locale language="Russian" country="Russia"/>
+        </property>
         <property name="text">
          <string>5 Урок</string>
         </property>
@@ -82,6 +134,15 @@
         <horstretch>0</horstretch>
         <verstretch>0</verstretch>
        </sizepolicy>
+      </property>
+      <property name="font">
+       <font>
+        <family>Arial</family>
+        <pointsize>14</pointsize>
+       </font>
+      </property>
+      <property name="locale">
+       <locale language="Russian" country="Russia"/>
       </property>
       <property name="text">
        <string>Вернуться в меню</string>

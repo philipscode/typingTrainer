@@ -1,6 +1,7 @@
 #include "trainer.h"
 #include "ui_trainer.h"
 #include "lessons.h"
+#include "result.h"
 
 #include <QFile>
 #include <QIODevice>
@@ -21,19 +22,23 @@ trainer::trainer(QWidget *parent) :
 
     this->setWindowTitle("Typing trainer");
 
+    setWindowIcon(QIcon(":/new/prefix3/Images/icon.png"));
+
     QCursor cursor = QCursor(QPixmap(":/new/prefix3/Images/cursor.png"),0,0);
-        this->setCursor(cursor);
+    this->setCursor(cursor);
+
     QCursor warn_cursor = QCursor(QPixmap(":/new/prefix3/Images/warn_cursor.png"),0,0);
-        ui->Back_to_lesson->setCursor(warn_cursor);
-        ui->startButton->setCursor(warn_cursor);
-        ui->pauseButton->setCursor(warn_cursor);
+
+    ui->Back_to_lesson->setCursor(warn_cursor);
+    ui->startButton->setCursor(warn_cursor);
+    ui->pauseButton->setCursor(warn_cursor);
 
     QObject::connect(ui->startButton, SIGNAL(clicked()),
                      this, SLOT(startClicked()));
-    qApp->installEventFilter(this);
     _timer.setInterval(20);
     connect(&_timer, SIGNAL(timeout()), this, SLOT(onTimer()));
     ui->pauseButton->setEnabled(false);
+    connect(this, SIGNAL(finished(int, int, int)), this, SLOT(showResult(int, int, int)));
 }
 
 trainer::~trainer()
@@ -50,6 +55,8 @@ void trainer::keyPressEvent(QKeyEvent* ke)
 
 void trainer::startClicked()
 {
+
+    ui->startButton->setText("Start");
     _lastStart = QTime::currentTime();
     _timer.start();
     ui->startButton->setEnabled(false);
@@ -58,6 +65,7 @@ void trainer::startClicked()
     if (inputFile.open(QIODevice::ReadOnly))
     {
         trainer::errs = 0;
+        trainer::length = 0;
         QTextStream in(&inputFile);
         QString subLine = NULL;
         QString prevText = NULL;
@@ -72,13 +80,14 @@ void trainer::startClicked()
                 subLine.append(' ');
             }
             QString line = in.readLine();
+            trainer::length += line.length();
             line.prepend(subLine);
             subLine.clear();
-            for (int i = 0; (i < line.length() - 9); i++)
+            for (int i = 0; (i < line.length() - 19); i++)
             {
                 if (trainer::flag) break;
-                subLine = line.mid(i, 10);
-                if (prevText.length() == 10 && i >= 1)
+                subLine = line.mid(i, 20);
+                if (prevText.length() == 20 && i >= 1)
                     prevText.remove(0, 1);
                 if (i >= 1)
                     prevText.append(line[i-1]);
@@ -87,13 +96,13 @@ void trainer::startClicked()
                     if (trainer::flag) break;
                     ui->label->setText("<span style = \"color: #9F9D9D\">" + prevText + "</span>"+
                                        "<span style = \"background-color: grey; color: yellow\">" +
-                                       subLine[0] + "</span>" + subLine.right(9));
+                                       subLine[0] + "</span>" + subLine.right(19));
                     QEventLoop loop;
                     connect(this, SIGNAL(pressed()), &loop, SLOT(quit()));
                     loop.exec();
                     if (w != subLine[0])
                     {
-                        trainer::player->setMedia(QUrl("qrc:/new/prefix2/Sounds/bass1.mp3"));
+                        trainer::player->setMedia(QUrl("qrc:/new/prefix2/Sounds/clap.mp3"));
                         trainer::player->setVolume(50);
                         trainer::player->play();
                         ++trainer::errs;
@@ -111,15 +120,15 @@ void trainer::startClicked()
             do
             {
                 if (trainer::flag) break;
-                ui->label->setText("<span style = \"color: #9F9D9D\">" + prevText.right(prevText.length() - i - 1) + subLine.mid(0, i) +
-                                   "</span>" + "<span style = \"background-color: grey; color: yellow\">" + subLine[i] + "</span>" +
-                                   subLine.right(subLine.length() - i - 1));
+                ui->label->setText("<span style = \"color: #9F9D9D\">" + prevText.right(prevText.length() - i - 1) +
+                                   subLine.mid(0, i) + "</span>" + "<span style = \"background-color: grey; color: yellow\">" +
+                                   subLine[i] + "</span>" + subLine.right(subLine.length() - i - 1));
                 QEventLoop loop;
                 connect(this, SIGNAL(pressed()), &loop, SLOT(quit()));
                 loop.exec();
                 if ( w != subLine[i] )
                 {
-                    trainer::player->setMedia(QUrl("qrc:/new/prefix2/Sounds/bass1.mp3"));
+                    trainer::player->setMedia(QUrl("qrc:/new/prefix2/Sounds/clap.mp3"));
                     trainer::player->setVolume(50);
                     trainer::player->play();
                     ++trainer::errs;
@@ -127,25 +136,28 @@ void trainer::startClicked()
                 }
             } while (trainer::w != subLine[i]);
         }
-        qDebug() << trainer::errs;
+        qDebug() << length << ' ' << errs << ' ' << time;
         inputFile.close();
         trainer::flag = false;
         ui->startButton->setEnabled(true);
         ui->pauseButton->setEnabled(false);
         ui->label->setText("Good job!");
          _timer.stop();
+         emit finished(trainer::length, trainer::errs, trainer::time);
     }
 }
 void trainer::onTimer()
 {
     int mseconds = _timeLeft.msecsSinceStartOfDay() + QTime::currentTime().msecsSinceStartOfDay() - _lastStart.msecsSinceStartOfDay();
     ui->label_time->setText(QTime::fromMSecsSinceStartOfDay(mseconds).toString("mm:ss"));
+    trainer::time = mseconds;
 }
 
 void trainer::on_Back_to_lesson_clicked()
 {
     _timer.stop();
-    QMessageBox::StandardButton reply = QMessageBox::question(this, "Warning", "Are you sure?", QMessageBox::Yes| QMessageBox::No);
+    QMessageBox::StandardButton reply = QMessageBox::question(this, "Warning", "Are you sure?",
+                                                              QMessageBox::Yes| QMessageBox::No);
     if (reply == QMessageBox::Yes)
     {
         trainer::flag = true;
@@ -174,4 +186,15 @@ void trainer::on_pauseButton_clicked()
         _timer.start();
         ui->pauseButton->setText("Pause");
     }
+}
+
+void trainer::showResult(int n1, int n2, int n3)
+{
+    ui->startButton->setText("Try again!");
+    result_window = new result();
+    result_window->symbols = n1;
+    result_window->errs = n2;
+    result_window->time = n3 / 1000;
+    result_window->setResult();
+    result_window->show();
 }

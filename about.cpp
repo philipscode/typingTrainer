@@ -11,9 +11,12 @@ about::about(QWidget *parent) :
     this->setWindowTitle("Typing trainer");
 
     QCursor cursor = QCursor(QPixmap(":/new/prefix3/Images/cursor.png"),0,0);
-        this->setCursor(cursor);
+    this->setCursor(cursor);
+
     QCursor warn_cursor = QCursor(QPixmap(":/new/prefix3/Images/warn_cursor.png"),0,0);
-        ui->GoBack->setCursor(warn_cursor);
+    ui->GoBack->setCursor(warn_cursor);
+
+    setWindowIcon(QIcon(":/new/prefix3/Images/icon.png"));
 }
 
 about::~about()

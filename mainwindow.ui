@@ -6,21 +6,24 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
-    <height>300</height>
+    <width>718</width>
+    <height>391</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
+  <property name="locale">
+   <locale language="Russian" country="Russia"/>
+  </property>
   <widget class="QWidget" name="centralWidget">
    <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
-      <x>120</x>
-      <y>60</y>
-      <width>171</width>
-      <height>121</height>
+      <x>190</x>
+      <y>90</y>
+      <width>331</width>
+      <height>141</height>
      </rect>
     </property>
     <layout class="QVBoxLayout" name="verticalLayout">
@@ -29,18 +32,17 @@
        <property name="enabled">
         <bool>true</bool>
        </property>
+       <property name="font">
+        <font>
+         <family>Arial</family>
+         <pointsize>18</pointsize>
+        </font>
+       </property>
        <property name="text">
-        <string>Меню</string>
+        <string>МЕНЮ</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignCenter</set>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QLabel" name="label">
-       <property name="text">
-        <string/>
        </property>
       </widget>
      </item>
@@ -52,6 +54,12 @@
          <verstretch>0</verstretch>
         </sizepolicy>
        </property>
+       <property name="font">
+        <font>
+         <family>Arial</family>
+         <pointsize>14</pointsize>
+        </font>
+       </property>
        <property name="text">
         <string>Начать обучение</string>
        </property>
@@ -59,6 +67,12 @@
      </item>
      <item>
       <widget class="QPushButton" name="About">
+       <property name="font">
+        <font>
+         <family>Arial</family>
+         <pointsize>14</pointsize>
+        </font>
+       </property>
        <property name="text">
         <string>Как это работает?</string>
        </property>
@@ -66,6 +80,12 @@
      </item>
      <item>
       <widget class="QPushButton" name="Exit">
+       <property name="font">
+        <font>
+         <family>Arial</family>
+         <pointsize>14</pointsize>
+        </font>
+       </property>
        <property name="text">
         <string>Выйти</string>
        </property>
@@ -79,7 +99,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>400</width>
+     <width>718</width>
      <height>22</height>
     </rect>
    </property>

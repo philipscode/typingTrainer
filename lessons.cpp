@@ -2,6 +2,7 @@
 #include "ui_lessons.h"
 #include "mainwindow.h"
 #include <QDebug>
+#include <QSysInfo>
 
 lessons::lessons(QWidget *parent) :
     QDialog(parent),
@@ -12,15 +13,17 @@ lessons::lessons(QWidget *parent) :
     this->setWindowTitle("Typing trainer");
 
     QCursor cursor = QCursor(QPixmap(":/new/prefix3/Images/cursor.png"),0,0);
-        this->setCursor(cursor);
-    QCursor warn_cursor = QCursor(QPixmap(":/new/prefix3/Images/warn_cursor.png"),0,0);
-        ui->Back_to_menu->setCursor(warn_cursor);
-        ui->lesson_1->setCursor(warn_cursor);
-        ui->lesson_2->setCursor(warn_cursor);
-        ui->lesson_3->setCursor(warn_cursor);
-        ui->lesson_4->setCursor(warn_cursor);
-        ui->lesson_5->setCursor(warn_cursor);
+    this->setCursor(cursor);
 
+    QCursor warn_cursor = QCursor(QPixmap(":/new/prefix3/Images/warn_cursor.png"),0,0);
+    ui->Back_to_menu->setCursor(warn_cursor);
+    ui->lesson_1->setCursor(warn_cursor);
+    ui->lesson_2->setCursor(warn_cursor);
+    ui->lesson_3->setCursor(warn_cursor);
+    ui->lesson_4->setCursor(warn_cursor);
+    ui->lesson_5->setCursor(warn_cursor);
+
+    setWindowIcon(QIcon(":/new/prefix3/Images/icon.png"));
     connect(this, SIGNAL(file_name(QString)),this, SLOT(start_lesson(QString)));
 }
 
@@ -47,7 +50,10 @@ void lessons::start_lesson(QString s)
 
 void lessons::on_lesson_1_clicked()
 {
-    emit file_name(":/new/prefix1/Files/lorem1.txt");
+    if (QSysInfo::buildCpuArchitecture() == "x86_64")
+        emit file_name(":/new/prefix1/Files/lorem1mac.txt");
+    else
+        emit file_name(":/new/prefix1/Files/lorem1win.txt");
 }
 
 void lessons::on_lesson_2_clicked()
