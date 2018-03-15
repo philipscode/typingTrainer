@@ -33,7 +33,7 @@ background-color: rgb(230, 255, 139);
    </property>
    <property name="font">
     <font>
-     <family>Arial</family>
+     <family>Georgia</family>
      <pointsize>24</pointsize>
     </font>
    </property>

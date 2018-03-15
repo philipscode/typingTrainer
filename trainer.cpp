@@ -56,7 +56,11 @@ void trainer::keyPressEvent(QKeyEvent* ke)
 
 void trainer::startClicked()
 {
-
+    QFont font;
+    font.setFamily("Georgia");
+    font.setPixelSize(24);
+    font.setBold(false);
+    ui->label->setFont(font);
     ui->startButton->setText("Start");
     _lastStart = QTime::currentTime();
     _timer.start();
