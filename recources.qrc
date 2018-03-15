@@ -20,8 +20,6 @@
         <file>Images/keyboard.jpg</file>
     </qresource>
     <qresource prefix="/new/prefix4">
-        <file>Rammetto_One/RammettoOne-Regular.ttf</file>
-        <file>Shrikhand/Shrikhand-Regular.ttf</file>
         <file>Indie_Flower/IndieFlower.ttf</file>
     </qresource>
 </RCC>

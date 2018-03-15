@@ -13,12 +13,5 @@ int main(int argc, char *argv[])
 
     w.show();
 
-    QFontDatabase db;
-      for(int i=0; i<db.families().size(); i++)
-      {
-        qDebug() << db.families().at(i);
-      }
-
-
     return a.exec();
 }
