@@ -12,6 +12,7 @@
 #include <QDebug>
 #include <QEvent>
 #include <QMessageBox>
+#include <QFont>
 
 
 trainer::trainer(QWidget *parent) :
@@ -95,7 +96,7 @@ void trainer::startClicked()
                 {
                     if (trainer::flag) break;
                     ui->label->setText("<span style = \"color: #9F9D9D\">" + prevText + "</span>"+
-                                       "<span style = \"background-color: grey; color: yellow\">" +
+                                       "<span style = \"background-color: rgb(191, 191, 191); color: rgb(230, 255, 139)\">" +
                                        subLine[0] + "</span>" + subLine.right(19));
                     QEventLoop loop;
                     connect(this, SIGNAL(pressed()), &loop, SLOT(quit()));
@@ -120,8 +121,8 @@ void trainer::startClicked()
             do
             {
                 if (trainer::flag) break;
-                ui->label->setText("<span style = \"color: #9F9D9D\">" + prevText.right(prevText.length() - i - 1) +
-                                   subLine.mid(0, i) + "</span>" + "<span style = \"background-color: grey; color: yellow\">" +
+                ui->label->setText("<span style = \"color: #9F9D9D\">" + prevText.right(prevText.length() - i - 1) + subLine.mid(0, i) +
+                                   "</span>" + "<span style = \"background-color: rgb(191, 191, 191); color: rgb(230, 255, 139)\">" +
                                    subLine[i] + "</span>" + subLine.right(subLine.length() - i - 1));
                 QEventLoop loop;
                 connect(this, SIGNAL(pressed()), &loop, SLOT(quit()));
@@ -142,6 +143,12 @@ void trainer::startClicked()
         ui->startButton->setEnabled(true);
         ui->pauseButton->setEnabled(false);
         ui->label->setText("Good job!");
+        QFont font;
+        font.setFamily("Indie Flower");
+        font.setPointSize(30);
+        font.setBold(true);
+        ui->label->setFont(font);
+
          _timer.stop();
          emit finished(trainer::length, trainer::errs, trainer::time);
     }

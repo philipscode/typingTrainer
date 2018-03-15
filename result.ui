@@ -13,6 +13,12 @@
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">QDialog {
+background-color: rgb(230, 255, 139);
+}
+</string>
+  </property>
   <property name="locale">
    <locale language="Russian" country="Russia"/>
   </property>
@@ -30,12 +36,21 @@
      <widget class="QLabel" name="label_4">
       <property name="font">
        <font>
-        <family>Arial</family>
-        <pointsize>18</pointsize>
+        <family>Indie Flower</family>
+        <pointsize>-1</pointsize>
+        <weight>75</weight>
+        <italic>false</italic>
+        <bold>true</bold>
        </font>
       </property>
+      <property name="styleSheet">
+       <string notr="true">QLabel {
+font:  bold 30px &quot;Indie Flower&quot;;
+color: black
+}</string>
+      </property>
       <property name="text">
-       <string>РЕЗУЛЬТАТ</string>
+       <string>RESULT</string>
       </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
@@ -61,6 +76,17 @@
        <layout class="QVBoxLayout" name="verticalLayout">
         <item>
          <widget class="QLabel" name="label1">
+          <property name="font">
+           <font>
+            <family>Georgia</family>
+            <pointsize>14</pointsize>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QLabel {
+color: black
+}</string>
+          </property>
           <property name="text">
            <string>Набрано символов: </string>
           </property>
@@ -68,6 +94,17 @@
         </item>
         <item>
          <widget class="QLabel" name="label2">
+          <property name="font">
+           <font>
+            <family>Georgia</family>
+            <pointsize>14</pointsize>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QLabel {
+color: black
+}</string>
+          </property>
           <property name="text">
            <string>Ошибок:</string>
           </property>
@@ -75,6 +112,17 @@
         </item>
         <item>
          <widget class="QLabel" name="label3">
+          <property name="font">
+           <font>
+            <family>Georgia</family>
+            <pointsize>14</pointsize>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QLabel {
+color: black
+}</string>
+          </property>
           <property name="text">
            <string>Время:</string>
           </property>
@@ -82,6 +130,17 @@
         </item>
         <item>
          <widget class="QLabel" name="label4">
+          <property name="font">
+           <font>
+            <family>Georgia</family>
+            <pointsize>14</pointsize>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QLabel {
+color: black
+}</string>
+          </property>
           <property name="text">
            <string>Скорость:</string>
           </property>
@@ -109,6 +168,17 @@
        <layout class="QVBoxLayout" name="verticalLayout_2">
         <item>
          <widget class="QLabel" name="symbolsLabel">
+          <property name="font">
+           <font>
+            <family>Georgia</family>
+            <pointsize>14</pointsize>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QLabel {
+color: black
+}</string>
+          </property>
           <property name="text">
            <string/>
           </property>
@@ -116,6 +186,17 @@
         </item>
         <item>
          <widget class="QLabel" name="errsLabel">
+          <property name="font">
+           <font>
+            <family>Georgia</family>
+            <pointsize>14</pointsize>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QLabel {
+color: black
+}</string>
+          </property>
           <property name="text">
            <string/>
           </property>
@@ -123,6 +204,17 @@
         </item>
         <item>
          <widget class="QLabel" name="timeLabel">
+          <property name="font">
+           <font>
+            <family>Georgia</family>
+            <pointsize>14</pointsize>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QLabel {
+color: black
+}</string>
+          </property>
           <property name="text">
            <string/>
           </property>
@@ -130,6 +222,17 @@
         </item>
         <item>
          <widget class="QLabel" name="speedLabel">
+          <property name="font">
+           <font>
+            <family>Georgia</family>
+            <pointsize>14</pointsize>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QLabel {
+color: black
+}</string>
+          </property>
           <property name="text">
            <string/>
           </property>
@@ -156,12 +259,22 @@
      <widget class="QPushButton" name="backButton">
       <property name="font">
        <font>
-        <family>Arial</family>
-        <pointsize>18</pointsize>
+        <family>Indie Flower</family>
+        <pointsize>-1</pointsize>
+        <weight>50</weight>
+        <italic>false</italic>
+        <bold>false</bold>
        </font>
       </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton {
+background-color: rgb(191, 191, 191);
+font:  18px &quot;Indie Flower&quot;;
+color: black
+}</string>
+      </property>
       <property name="text">
-       <string>КЛАССНО!</string>
+       <string>GREAT!</string>
       </property>
       <property name="autoDefault">
        <bool>false</bool>

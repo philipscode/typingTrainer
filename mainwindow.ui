@@ -13,6 +13,20 @@
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">MainWindow {
+background-color: rgb(230, 255, 139);
+}
+
+QMessageBox {
+background-color: rgb(230, 255, 139);
+}
+
+StandardButton { 
+background-color: rgb(191, 191, 191);
+font:  18px &quot;Indie Flower&quot;;
+color: black}</string>
+  </property>
   <property name="locale">
    <locale language="Russian" country="Russia"/>
   </property>
@@ -20,10 +34,10 @@
    <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
-      <x>190</x>
-      <y>90</y>
-      <width>331</width>
-      <height>141</height>
+      <x>230</x>
+      <y>100</y>
+      <width>241</width>
+      <height>160</height>
      </rect>
     </property>
     <layout class="QVBoxLayout" name="verticalLayout">
@@ -34,12 +48,26 @@
        </property>
        <property name="font">
         <font>
-         <family>Arial</family>
-         <pointsize>18</pointsize>
+         <family>Indie Flower</family>
+         <pointsize>-1</pointsize>
+         <weight>75</weight>
+         <italic>false</italic>
+         <bold>true</bold>
         </font>
        </property>
+       <property name="styleSheet">
+        <string notr="true">QLabel {
+font: bold 30px &quot;Indie Flower&quot;
+}</string>
+       </property>
+       <property name="locale">
+        <locale language="English" country="UnitedStates"/>
+       </property>
        <property name="text">
-        <string>МЕНЮ</string>
+        <string>MENU</string>
+       </property>
+       <property name="textFormat">
+        <enum>Qt::PlainText</enum>
        </property>
        <property name="alignment">
         <set>Qt::AlignCenter</set>
@@ -48,71 +76,126 @@
      </item>
      <item>
       <widget class="QPushButton" name="Begin">
+       <property name="enabled">
+        <bool>true</bool>
+       </property>
        <property name="sizePolicy">
-        <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+        <sizepolicy hsizetype="Ignored" vsizetype="Fixed">
          <horstretch>0</horstretch>
          <verstretch>0</verstretch>
         </sizepolicy>
        </property>
        <property name="font">
         <font>
-         <family>Arial</family>
-         <pointsize>14</pointsize>
+         <family>Indie Flower</family>
+         <pointsize>-1</pointsize>
+         <weight>50</weight>
+         <italic>false</italic>
+         <bold>false</bold>
         </font>
        </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton {
+background-color: rgb(191, 191, 191);
+font:  18px &quot;Indie Flower&quot;;
+color: black
+}</string>
+       </property>
        <property name="text">
-        <string>Начать обучение</string>
+        <string>Start</string>
        </property>
       </widget>
+     </item>
+     <item>
+      <spacer name="verticalSpacer">
+       <property name="orientation">
+        <enum>Qt::Vertical</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>20</width>
+         <height>40</height>
+        </size>
+       </property>
+      </spacer>
      </item>
      <item>
       <widget class="QPushButton" name="About">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Ignored" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
        <property name="font">
         <font>
-         <family>Arial</family>
-         <pointsize>14</pointsize>
+         <family>Indie Flower</family>
+         <pointsize>-1</pointsize>
+         <weight>50</weight>
+         <italic>false</italic>
+         <bold>false</bold>
         </font>
        </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton {
+background-color: rgb(191, 191, 191);
+font:  18px &quot;Indie Flower&quot;;
+color: black
+}</string>
+       </property>
        <property name="text">
-        <string>Как это работает?</string>
+        <string>Intro</string>
        </property>
       </widget>
      </item>
      <item>
+      <spacer name="verticalSpacer_2">
+       <property name="orientation">
+        <enum>Qt::Vertical</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>20</width>
+         <height>40</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
       <widget class="QPushButton" name="Exit">
+       <property name="enabled">
+        <bool>true</bool>
+       </property>
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
        <property name="font">
         <font>
-         <family>Arial</family>
-         <pointsize>14</pointsize>
+         <family>Indie Flower</family>
+         <pointsize>-1</pointsize>
+         <weight>50</weight>
+         <italic>false</italic>
+         <bold>false</bold>
         </font>
        </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton {
+background-color: rgb(191, 191, 191);
+font:  18px &quot;Indie Flower&quot;;
+color: black
+}</string>
+       </property>
        <property name="text">
-        <string>Выйти</string>
+        <string>Exit</string>
        </property>
       </widget>
      </item>
     </layout>
    </widget>
   </widget>
-  <widget class="QMenuBar" name="menuBar">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>0</y>
-     <width>718</width>
-     <height>22</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QToolBar" name="mainToolBar">
-   <attribute name="toolBarArea">
-    <enum>TopToolBarArea</enum>
-   </attribute>
-   <attribute name="toolBarBreak">
-    <bool>false</bool>
-   </attribute>
-  </widget>
-  <widget class="QStatusBar" name="statusBar"/>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources/>

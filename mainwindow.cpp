@@ -4,6 +4,7 @@
 #include <QWidget>
 #include <QPushButton>
 #include <QMessageBox>
+#include <QFont>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),

@@ -20,8 +20,11 @@ public:
     ~MainWindow();
 
 private slots:
+
     void on_Begin_clicked();
+
     void on_About_clicked();
+
     void on_Exit_clicked();
 
 private:

@@ -6,59 +6,143 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>445</width>
-    <height>368</height>
+    <width>718</width>
+    <height>391</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">QDialog {
+background-color: rgb(230, 255, 139);
+}
+</string>
+  </property>
   <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
-     <x>140</x>
-     <y>10</y>
-     <width>141</width>
-     <height>20</height>
+     <x>150</x>
+     <y>40</y>
+     <width>121</width>
+     <height>61</height>
     </rect>
    </property>
-   <property name="text">
-    <string>Как это работает?</string>
+   <property name="font">
+    <font>
+     <family>Indie Flower</family>
+     <pointsize>-1</pointsize>
+     <weight>75</weight>
+     <italic>false</italic>
+     <bold>true</bold>
+    </font>
    </property>
-  </widget>
-  <widget class="QLabel" name="label_2">
-   <property name="geometry">
-    <rect>
-     <x>130</x>
-     <y>100</y>
-     <width>191</width>
-     <height>161</height>
-    </rect>
+   <property name="styleSheet">
+    <string notr="true">QLabel {
+font:  bold 30px &quot;Indie Flower&quot;;
+color: black
+}</string>
    </property>
    <property name="text">
-    <string>Многотекста Многотекста
-Многотекста Многотекста
-Многотекста Многотекста
-Многотекста Многотекста
-Многотекста Многотекста
-Многотекста Многотекста
-Многотекста </string>
+    <string>INTRO</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
    </property>
   </widget>
   <widget class="QPushButton" name="GoBack">
    <property name="geometry">
     <rect>
-     <x>130</x>
-     <y>290</y>
-     <width>75</width>
-     <height>23</height>
+     <x>160</x>
+     <y>320</y>
+     <width>101</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Indie Flower</family>
+     <pointsize>-1</pointsize>
+     <weight>50</weight>
+     <italic>false</italic>
+     <bold>false</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton {
+background-color: rgb(191, 191, 191);
+font:  18px &quot;Indie Flower&quot;;
+color: black
+}</string>
+   </property>
+   <property name="text">
+    <string>Back</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_3">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>120</y>
+     <width>411</width>
+     <height>171</height>
     </rect>
    </property>
    <property name="text">
-    <string>Назад</string>
+    <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap resource="recources.qrc">:/new/prefix3/Images/keyboard.jpg</pixmap>
+   </property>
+   <property name="scaledContents">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QTextBrowser" name="textBrowser">
+   <property name="geometry">
+    <rect>
+     <x>430</x>
+     <y>21</y>
+     <width>256</width>
+     <height>331</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Georgia</family>
+     <pointsize>14</pointsize>
+    </font>
+   </property>
+   <property name="focusPolicy">
+    <enum>Qt::NoFocus</enum>
+   </property>
+   <property name="autoFillBackground">
+    <bool>true</bool>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QTextBrowser {
+background-color: rgb(230, 255, 139);
+color: black
+}
+</string>
+   </property>
+   <property name="locale">
+    <locale language="Russian" country="Russia"/>
+   </property>
+   <property name="frameShape">
+    <enum>QFrame::NoFrame</enum>
+   </property>
+   <property name="html">
+    <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Georgia'; font-size:14pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'.SF NS Text';&quot;&gt;Клавиатурный тренажер поможет Вам освоить метод слепой десятипальцевой печати. Основной принцип данной методики заключается в том, что, проходя уроки, расположенные в специальной последовательности, Ваши пальцы будут последовательно запоминать расположение клавиш на клавиатуре. По окончании обучения скорость и качество набора символов значительно увеличится, поскольку Вы больше не будете тратить время на поиск необходимой буквы. Обучение состоит из нескольких уроков, сложность которых будет постепенно возрастать. Чтобы начать заниматься, перейдите по соответствующей кнопке в меню и выберете нужный урок. После этого Вам будет предложено набирать символы, отображаемые на экране. Ваша задача – делать это максимально быстро и точно. Ориентируйтесь на звуковой сигнал – он подскажет Вам, что была нажата неверная клавиша. Во время урока старайтесь не смотреть на клавиатуру, а вспоминать, где находятся те или иные символы. Мы советуем изучить расположение пальцев на клавиатуре по картинке слева. Старайтесь задействовать как можно больше пальцев. Помните: чтобы эффект от занятий был ощутимым, они должны быть регулярными. Все получится!&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
    </property>
   </widget>
  </widget>
- <resources/>
+ <resources>
+  <include location="recources.qrc"/>
+ </resources>
  <connections/>
 </ui>
